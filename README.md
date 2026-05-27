@@ -1,7 +1,12 @@
+[General]
+bypass-system = true
+skip-proxy = 192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12, localhost, *.local, capitalized-identifier.local
+tun = connectivity
 
 [Rule]
-AND,((DOMAIN-SUFFIX,googlevideo.com),(PROTOCOL,UDP)),REJECT
-AND,((DOMAIN,youtubei.googleapis.com),(PROTOCOL,UDP)),REJECT
+DOMAIN-SUFFIX,googlevideo.com,REJECT
+DOMAIN-SUFFIX,youtubei.googleapis.com,REJECT
+FINAL,DIRECT
 
 [Header Rewrite]
 ^https?://api.revenuecat.com/.+/(receipts$|subscribers/?(.*?)*$) header-del x-revenuecat-etag
